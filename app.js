@@ -3,7 +3,8 @@ let inpOfGuess = document.querySelector(".guess");
 let checkBtn = document.querySelector(".btn-checker");
 let message = document.querySelector(".message");
 let number = document.querySelector(".number");
-let score = document.querySelector(".score")
+let score = document.querySelector(".score");
+let again = document.querySelector(".again-btn");
 function gamer(e) {
   e.preventDefault();
   let randomNumGen = Math.ceil(Math.random() * 6);
@@ -17,7 +18,7 @@ function gamer(e) {
     number.textContent = randomNumGen;
     score.textContent--
     body.backgroundColor = "blue";
-  }else if(inpOfGuess.value< randomNumGen){
+  }else if(inpOfGuess.value < randomNumGen){
     message.textContent = "you are lower";
     number.textContent = randomNumGen;
     score.textContent--;
@@ -32,6 +33,19 @@ function gamer(e) {
     checkBtn.style.backgroundColor = "grey";
     checkBtn.style.cursor = "no-drop"
   }
+  
 }
-
 checkBtn.addEventListener("click", gamer);
+
+ 
+function restart(){
+  message.textContent = "start guessing ";
+  number.textContent = "?";
+  score.textContent = 6;
+  inpOfGuess.value = ""
+  let body = document.body.style
+  body.backgroundColor = "red";
+
+}
+again.addEventListener("click",restart)
+
